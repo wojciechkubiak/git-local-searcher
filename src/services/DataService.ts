@@ -15,7 +15,6 @@ export class DataService implements IDataService {
     const data = axios
       .get(`https://api.github.com/search/repositories?q=${id}`)
       .then((result) => {
-        console.log(result.status);
         if(result.status < 400) {
           const data: Data = this.mapRawDataToData(result.data);
           data.items = [];
