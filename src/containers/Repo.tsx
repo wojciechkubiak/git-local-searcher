@@ -93,10 +93,15 @@ const Repo = ({ currentRepo, isLocal }: IRepo) => {
   );
   const localData: Item[] = useAppSelector((state) => state.data.localData);
 
+  const numberParser = (value: number): string =>
+    value > 9 ? value.toString() : `0${value}`;
+
   const handleDate = (date: string): string => {
     let d: Date = new Date(date);
 
-    return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+    return `${numberParser(d.getDate())}/${numberParser(
+      d.getMonth() + 1
+    )}/${numberParser(d.getFullYear())}`;
   };
 
   const [isAdded, setIsAdded] = useState<boolean>(isLocal);
@@ -148,7 +153,7 @@ const Repo = ({ currentRepo, isLocal }: IRepo) => {
             />
             <div>
               <h2>{currentRepo.owner?.login}</h2>
-              <a href={currentRepo.owner?.url}>Link</a>
+              <a href={currentRepo.owner?.url} target="_blank" rel="noreferrer" >Go to the website</a>
             </div>
           </OwnerData>
           <RepoDescription>

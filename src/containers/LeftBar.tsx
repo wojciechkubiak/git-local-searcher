@@ -98,16 +98,16 @@ const LeftBar = (): JSX.Element => {
   return (
     <LeftBarBody>
       <TechnologiesList>
-        {technologies?.map((l) => (
+        {technologies?.map((technology) => (
           <ListButton
             key={uuidv4()}
             onClick={() => {
-              dispatch(setCurrentTechnology(l));
+              dispatch(setCurrentTechnology(technology));
               dispatch(clearData());
               dispatch(clearRepo());
             }}
-            text={l}
-            isActive={l === currentTechnology}
+            text={technology}
+            isActive={technology === currentTechnology}
           />
         ))}
       </TechnologiesList>

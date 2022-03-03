@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { fetchData } from "../store/data/actions";
@@ -120,6 +121,7 @@ const Search = (): JSX.Element => {
           : data.localData
         )?.map((item) => (
           <ReposListElement
+            key={uuidv4()}
             onClick={() => {
               dispatch(
                 addRepo({
